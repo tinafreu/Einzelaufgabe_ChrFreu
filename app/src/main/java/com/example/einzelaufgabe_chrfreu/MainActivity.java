@@ -12,6 +12,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.Socket;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -89,4 +90,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    //AUFGABE 2
+
+    //01454434 & 7 = 2
+
+    public void Primzahlen_streichen(View v){
+
+        //"EditText (Matrikelnummer) verbinden und in String umwandeln
+        send = edit.getText().toString();
+        String result = "";
+
+
+        //Ziffern der Größe nach sortieren
+        char[] array = send.toCharArray(); //String wird in ein char umgewandelt und in ein Array eingefügt
+        Arrays.sort(array); //Zeichen im Array werden der Größe nach sortiert
+
+        //Zahlen ausgeben
+        for (int i = 0; i<array.length; i++)
+
+            //Wenn die Eingabe die Zahlen 0,1,4,6,8 oder 9 enthält, gib diese Zahlen aus
+            //Dadurch werden die Primzahlen 2,3,5,7 ignoriert und nicht ausgegeben
+            if (array[i] == '0' || array[i] == '1' || array[i] == '4' || array[i] == '6' || array[i] == '8' || array[i] == '9') {
+                result = result + array[i];
+            }
+
+        //Ergebnis ausgeben
+        text.setText(result);
+    }
 }
