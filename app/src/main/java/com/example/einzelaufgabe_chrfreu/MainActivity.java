@@ -3,6 +3,7 @@ package com.example.einzelaufgabe_chrfreu;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -34,6 +35,14 @@ public class MainActivity extends AppCompatActivity {
         text = findViewById(R.id.antwserver); //Verbindung zum Textfeld, wo die Antwort vom Server angezeigt wird
     }
 
+
+    public void OnClick (View v){
+
+        new ServerRequest().execute();
+    }
+
+
+    //AsyncTask hilft einen Thread zu erzeugen, damit die Applikation bei längeren Berechnungen nicht blockiert wird
     class ServerRequest extends AsyncTask<Void, Void, String>{
 
 
@@ -66,6 +75,15 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException ioe){
                 ioe.printStackTrace();
             }
+
+            //runOnUiThread -->helps to return the updated UI to Main Class
+            final String finalAnswer = answer;
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    text.setText(finalAnswer);
+                }
+            });
 
             return null;
         }
