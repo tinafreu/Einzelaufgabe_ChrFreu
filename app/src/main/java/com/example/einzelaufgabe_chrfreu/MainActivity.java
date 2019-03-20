@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView text; //Ausgabefeld Server
 
     private Socket socket;
-    private DataOutputStream toServer; //um Nachricht an Server zu senden
-    private BufferedReader fromServer; //um Nachricht vom Server zu bekommen
-    private String send; //wird für Textfeld mit Matrikelnummer benötigt
+    private DataOutputStream toServer;
+    private BufferedReader fromServer;
+    private String send;
 
     private static final int SERVERPORT = 53212;
     private static final String SERVER_IP = "se2-isys.aau.at";
@@ -43,14 +43,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //AsyncTask hilft einen Thread zu erzeugen, damit die Applikation bei längeren Berechnungen nicht blockiert wird
+
     class ServerRequest extends AsyncTask<Void, Void, String>{
 
 
         @Override
         protected String doInBackground(Void... voids) {
 
-            //"EditText" (Matrikelnummer) verbinden und in String umwandeln
+
             send = edit.getText().toString();
             String answer = "";
 
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void Primzahlen_streichen(View v){
 
-        //"EditText (Matrikelnummer) verbinden und in String umwandeln
+
         send = edit.getText().toString();
         String result = "";
 
