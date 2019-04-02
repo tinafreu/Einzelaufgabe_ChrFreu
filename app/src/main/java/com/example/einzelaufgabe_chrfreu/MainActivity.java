@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main); //verweist auf das UserInterface
 
         edit = findViewById(R.id.matrikelnr); //Verbindung zum Eingabefeld, wo die Matrikelnummer eingegeben wird
         text = findViewById(R.id.antwserver); //Verbindung zum Textfeld, wo die Antwort vom Server angezeigt wird
@@ -103,8 +103,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         //Ziffern der Größe nach sortieren
-        char[] array = send.toCharArray(); //String wird in ein char umgewandelt und in ein Array eingefügt
-        Arrays.sort(array); //Zeichen im Array werden der Größe nach sortiert
+        char[] array = send.toCharArray();
+        Arrays.sort(array);
+
+
+
+
+
 
         //Zahlen ausgeben
         for (int i = 0; i<array.length; i++)
@@ -115,7 +120,11 @@ public class MainActivity extends AppCompatActivity {
                 result = result + array[i];
             }
 
+
+
         //Ergebnis ausgeben
         text.setText(result);
     }
+
+
 }
